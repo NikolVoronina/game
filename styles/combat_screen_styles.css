@@ -1,0 +1,456 @@
+body {
+    background: url('../images/backgrounds/background_4.png') no-repeat center center fixed;
+    background-size: cover; /* Растягиваем фон на весь экран */
+    background-position: center; /* Фон будет выровнен по центру */
+    background-repeat: no-repeat; /* Фон не будет повторяться */
+    margin: 0;
+    padding: 0;
+    background-color: #f7bdeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh; /* Используем полную высоту экрана */
+    overflow: hidden; /* Отключаем прокрутку, чтобы фон не выходил за пределы экрана */
+}
+
+.rules {
+    position: absolute;
+    bottom: 5vh; /* Отступ от нижней границы */
+    left: 2vw; /* Отступ от левой границы */
+    width: auto;
+    height: 15vh; /* Адаптивная высота */
+    max-width: 250px; /* Ограничение ширины изображения */
+    z-index: 10;
+}
+
+.back_arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    left: 2vw;
+}
+
+.back_arrow_1 {
+    height: 8vw; /* Увеличиваем размер стрелочки на 1vw для большей видимости */
+    max-height: 50px;
+    min-height: 15px; /* Ограничиваем максимальную высоту */
+    width: auto;
+    margin-top: -2vw; /* Регулируем отступ для центровки */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5vw;
+}
+
+
+.health-bar {
+    width: 100px;
+    height: 20px;
+    background-color: #ddd;
+    border: 1px solid #333;
+    position: relative;
+}
+
+.player-container {
+    display: flex;
+    align-items: flex-end;
+    width: 100%; /* Используем всю ширину экрана */
+}
+
+
+.box_game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: 10px 10px;
+    background-repeat: repeat;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    width: 60%;
+    height: 7vw;
+    margin-bottom: 1vw;
+}
+
+.intro-image {
+    display: none;
+    max-width: 100%;
+    height: auto;
+    animation: fadeInImage 2s forwards;
+}
+
+.sister {
+    height: 100%;
+}
+
+.intro-text {
+    font-family: "Pixelify Sans", serif;
+    font-size: 1.3vw;
+    color: #333;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInText 3s forwards;
+    margin: 20px 0;
+    max-width: 70%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.next-button {
+    font-family: "Pixelify Sans", serif;
+    background-color: #f884be;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5vw;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.next-button:hover {
+    background-color: #f8f8f8;
+    color: #f884be;
+}
+
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.hero, .enemy {
+    position: absolute;
+    max-height: 20vw; /* Ограничиваем максимальную высоту персонажей */
+    width: auto;
+    bottom: 0; /* Помещаем их в нижнюю часть контейнера */
+}
+
+
+
+
+.enemy {
+    right: 14vw; /* Враг справа от центра */
+    bottom: 5vh; /* Тот же отступ снизу для врага */
+}
+
+#name-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+}
+
+#next-button {
+    font-family: "Pixelify Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    
+    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
+    background-repeat: repeat;   /* Повторение текстуры */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
+    border-radius: 10px;  /* Закругленные углы */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+
+    background-color: #f884be;
+    color: #ffffff;
+
+    width: 3vw;
+    height: 3vh;
+
+    margin-left: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-width: 3vw;
+    min-height: 3vh;
+
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
+    white-space: nowrap; /* Не переносит текст */
+}
+
+.submit{
+    font-family: "Pixelify Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    
+    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
+    background-repeat: repeat;   /* Повторение текстуры */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
+    border-radius: 10px;  /* Закругленные углы */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+
+    background-color: #f884be;
+    color: #ffffff;
+
+    width: 3vw;
+    height: 3vh;
+
+    margin-left: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-width: 3vw;
+    min-height: 3vh;
+
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
+    white-space: nowrap; /* Не переносит текст */
+}
+
+.submit:hover{
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #f884be;
+}
+
+
+#username{
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: 10px 10px;
+    background-repeat: repeat;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+#close-button{
+    font-family: "Pixelify Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    
+    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
+    background-repeat: repeat;   /* Повторение текстуры */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
+    border-radius: 10px;  /* Закругленные углы */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+
+    background-color: #f884be;
+    color: #ffffff;
+
+    width: 3vw;
+    height: 3vh;
+
+    margin-left: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-width: 3vw;
+    min-height: 3vh;
+
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
+    white-space: nowrap; /* Не переносит текст */
+}
+
+/* Стили для полос здоровья */
+.health-bar-container {
+    width: 20vw; /* Размер адаптивный */
+    max-width: 500px; /* Ограничение по максимальной ширине */
+    min-width: 280px; /* Минимальная ширина */
+    margin: 10px auto;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#hero-health-container {
+    top: 5vh;
+    left: 10vw;
+}
+
+#enemy-health-container {
+    top: 5vh;
+    right: 10vw;
+}
+
+
+.health-bar {
+    width: 100%;
+    height: 4vh;
+    background-color: #ddd;
+    border: none;
+    border-radius: 8px;
+    position: relative;
+}
+
+.health-bar-fill {
+    height: 100%;
+    width: 100%; /* Изначально 100%, меняется динамически */
+    background-color: #84eef6;
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+#enemy-health-fill {
+    background-color: #f884be;
+}
+
+p {
+    margin: 0;
+    font-family: "Pixelify Sans", serif;
+    font-size: 1.3vw;
+    color: #fff;
+}
+
+input {
+    font-family: "Pixelify Sans", sans-serif; /* Используй свой шрифт */
+    font-size: 16px; /* Размер шрифта */
+    color: #333; /* Цвет текста */
+    text-align: center; /* Центрирование текста */
+    padding: 5px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругление углов */
+    border: 2px solid #ccc; /* Граница */
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#end-dialog {
+    display: flex; /* Изначально скрыто */
+    flex-direction: row; /* Элементы в ряд */
+    position: relative;
+    width: 60%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    margin-bottom: 1vw; /* Центрируем сам диалог */
+    padding: 20px;
+    gap: 20px; /* Отступ между изображением и текстом */
+    
+}
+
+.sister_end {
+    width: 150px; /* Фиксированный размер */
+    height: auto;
+    flex-shrink: 0; /* Запрещаем сжатие картинки */
+}
+
+.end-dialog-content {
+    display: flex;
+    flex-direction: column; /* Текст и кнопка в колонку */
+    align-items: flex-start;
+    align-items: center; /* Выравнивание влево */
+    
+}
+
+#end-dialog-close-button {
+    font-family: "Pixelify Sans", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    
+    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
+    background-repeat: repeat;   /* Повторение текстуры */
+    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
+    border-radius: 10px;  /* Закругленные углы */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+
+    background-color: #f884be;
+    color: #ffffff;
+
+    width: 8vw;
+    height: 3vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    min-width: 8vw;
+    min-height: 3vh;
+
+    overflow: hidden; 
+    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
+    white-space: nowrap; /* Не переносит текст */
+
+    margin-top: 0.7vh;
+}
+
+
+#end-dialog-close-button:hover {
+    background-color: #f8f8f8;
+    color: #f884be;
+    cursor: pointer;
+}
+
+#end-dialog p {
+    color: #333; /* или любой другой цвет */
+    font-size: 1.3vw;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.enemy-blink {
+    animation: blink 0.5s infinite;
+}
+
+.fireball {
+    position: absolute;
+    max-width: 90px;
+    min-width: 10px;
+    height: auto;
+    z-index: 10;
+}
+
+.hit-effect {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
