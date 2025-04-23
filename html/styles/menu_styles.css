@@ -15,14 +15,14 @@ body {
 }
 
 .menu-container {
-    width: 38vw;  /* Размер квадрата */
+    width: 38vw;  
     height: 25vw;
-    background-color: rgba(255, 255, 255, 0.6);  /* Полупрозрачный фон */
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    background-color: rgba(255, 255, 255, 0.6);  
+    background-size: 10px 10px;  
+    background-repeat: repeat;   
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,18 +74,20 @@ a:hover {
     color: #ffffff;
 }
 
+
+
 .level_1 {
     font-family: "Pixelify Sans", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 2vw;
-    margin: 0 2vw; /* Отступы слева и справа по 10px */
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    margin: 0 2vw; 
+    background-size: 10px 10px;  
+    background-repeat: repeat;   
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
     background-color: #f884be;
     color: #ffffff;
     width: 3.3vw;
@@ -98,23 +100,20 @@ a:hover {
     font-weight: 400;
     font-style: normal;
     font-size: 2vw;
-    margin: 0 2vw; /* Отступы слева и справа по 10px */
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    margin: 0 2vw; 
+    background-size: 10px 10px;  
+    background-repeat: repeat;   
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
     background-color: #cac7c8;
     color: #ffffff;
     width: 3.3vw;
     height: 3.3vw;
-    pointer-events: none; /* Кнопка не кликабельна до тех пор, пока не станет активной */
+    pointer-events: none; 
 }
 
-.level_2.active, .level_3.active {
-    background-color: #f884be; /* Когда уровень доступен, кнопка становится розовой */
-    pointer-events: auto; /* Делаем кнопку кликабельной */
-}
+
 
 .level_1:hover, .level_2.active:hover, .level_3.active:hover {
     cursor: pointer;
@@ -125,6 +124,8 @@ a:hover {
 
 .back_to_menu{
     margin-top: 3vw;
+    display: flex;
+    justify-content: center; 
 }
 
 #back_menu{
@@ -137,10 +138,10 @@ a:hover {
     align-items: center;
     justify-content: center;
    
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
+    background-size: 10px 10px;  
+    background-repeat: repeat;   
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px; 
 
     background-color: #f884be;
     color: #ffffff;
