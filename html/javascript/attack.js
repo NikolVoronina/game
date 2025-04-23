@@ -59,7 +59,7 @@ function heroAttack() {
     const heroRect = hero.getBoundingClientRect();
 
     let fireball = document.createElement("img");
-    fireball.src = "../images/effects/1_level/attack_1level_hero.gif";  
+    fireball.src = "images/effects/1_level/attack_1level_hero.gif";  
     fireball.classList.add("fireball");
 
     // Устанавливаем начальное положение файербола (рядом с героем)
@@ -104,7 +104,7 @@ function checkCollision(element1, element2) {
 }
 function enemyHitEffect() {
     let hitEffect = document.createElement("img");
-    hitEffect.src = "../images/effects/1_level/effect_1level_hero.gif"; 
+    hitEffect.src = "images/effects/1_level/effect_1level_hero.gif"; 
     hitEffect.classList.add("hit-effect");
 
     let enemy = document.querySelector(".enemy");
