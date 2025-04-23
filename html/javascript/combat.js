@@ -7,17 +7,17 @@ const dialogue = [
 ];
 
 let currentDialogueIndex = 0;
-let username = '';  // Для хранения имени пользователя
-let isDialogueActive = true; // Флаг для проверки активности диалога
+let username = '';  // her beveger vi navnet av brukeren
+let isDialogueActive = true; 
 
 function updateDialogue() {
     const dialogueText = document.getElementById("intro-text");
     const nextButton = document.getElementById("next-button");
-    const closeButton = document.getElementById("close-button"); // Кнопка закрытия
+    const closeButton = document.getElementById("close-button"); 
     const nameForm = document.getElementById("name-form");
 
     if (currentDialogueIndex === 0) {
-        nameForm.style.display = "none";  // После ввода имени скрываем форму
+        nameForm.style.display = "none";  // fjerne seg etter på
         currentDialogueIndex++;
         dialogueText.innerHTML = `Nice to meet you, <span style="color: #f884be; display: inline;">${username}</span> My name is <span style="color:#679BDA; display: inline;">Yumi`;
         nextButton.style.display = "inline-block";
@@ -32,8 +32,8 @@ function updateDialogue() {
     } else if (currentDialogueIndex === 3) {
         dialogueText.textContent = dialogue[currentDialogueIndex];
         currentDialogueIndex++;
-        nextButton.style.display = "none";  // Скрываем кнопку "Next"
-        closeButton.style.display = "inline-block";  // Показываем кнопку "Close"
+        nextButton.style.display = "none";  // - "Next"
+        closeButton.style.display = "inline-block";  // + "Close"
     } else {
         closeDialogue();
     }
@@ -41,13 +41,13 @@ function updateDialogue() {
 
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        // Проверяем, если кнопка "Next" видна, кликаем по ней
+        
         const nextButton = document.getElementById("next-button");
         if (nextButton.style.display !== "none") {
             nextButton.click();
         }
         
-        // Проверяем, если кнопка "Close" видна, кликаем по ней
+        
         const closeButton = document.getElementById("close-button");
         if (closeButton.style.display !== "none") {
             closeButton.click();
@@ -55,45 +55,45 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// Закрытие диалога
+// lukkes dialogen
 function closeDialogue() {
     const boxGame = document.querySelector(".box_game");
-    boxGame.style.visibility = "hidden";  // Скрываем без изменения раскладки
-    isDialogueActive = false; // Диалог завершен, разблокируем действия
+    boxGame.style.visibility = "hidden";  
+    isDialogueActive = false; // fra dette øyeblikket man kan bevege seg 
 }
 
-// Обработчик отправки имени
+// navn 
 document.getElementById("name-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    username = document.getElementById("username").value;  // Получаем имя из поля ввода
-    updateDialogue();  // Переходим к следующему этапу диалога
+    username = document.getElementById("username").value;  // får navn
+    updateDialogue();  // neste steg
 });
 
-// Обработчик для кнопки "Следующий"
+// next button 
 document.getElementById("next-button").addEventListener("click", updateDialogue);
 
-// Персонаж
+// posisjon
 let hero = document.querySelector(".hero");
-let positionX = 22; // Начальная позиция по горизонтали (в процентах)
-let positionY = 55; // Начальная позиция по вертикали (в процентах)
-let isJumping = false; // флаг для проверки, прыгнул ли герой
-let keys = {}; // Для отслеживания нажатых клавиш
+let positionX = 22;
+let positionY = 55; 
+let isJumping = false; 
+let keys = {}; 
 
-// Установка начальной позиции героя
+// posisjon når vi starter 
 hero.style.position = "absolute";
 hero.style.left = positionX + 'vw';
 hero.style.top = positionY + 'vh';
 
 
-// Функция для движения вправо
-function moveRight(speed = 1) {  // Добавил параметр скорости
+// til høyre
+function moveRight(speed = 1) {  // speed 
     if (positionX < window.innerWidth - hero.offsetWidth) { 
         positionX += speed;  
         hero.style.left = positionX + 'vw'; 
     }
 }
 
-// Функция для движения влево
+// til venstre
 function moveLeft() {
     if (positionX > 0) {
         positionX -= 1; 
@@ -104,30 +104,30 @@ function moveLeft() {
 function jump() {
     if (!isJumping) {
         isJumping = true;
-        let startY = positionY; // Запоминаем начальную позицию
-        let jumpHeight = 35; // Высота прыжка в vh
+        let startY = positionY; 
+        let jumpHeight = 35; // høylengde
         let jumpUp = 0;
-        let dashForward = keys["KeyD"] ? 2 : 0; // Рывок вперёд
-        let dashBackward = keys["KeyA"] ? -2 : 0; // Рывок назад
+        let dashForward = keys["KeyD"] ? 2 : 0; // rykk fremovre
+        let dashBackward = keys["KeyA"] ? -2 : 0; // rykk tilbake
 
         let jumpInterval = setInterval(function () {
             if (jumpUp < jumpHeight) {
-                positionY -= 2; // Быстро поднимаемся
-                positionX += dashForward + dashBackward; // Движение в воздухе
+                positionY -= 2; 
+                positionX += dashForward + dashBackward; // beveger seg i luft
                 hero.style.top = positionY + 'vh';
                 hero.style.left = positionX + 'vw';
                 jumpUp += 2;
             } else {
                 clearInterval(jumpInterval);
 
-                // Анимация спуска
+                // animasjon som man går ned
                 let fallInterval = setInterval(function () {
                     if (positionY < startY) {
-                        positionY += 2; // Быстро опускаемся
+                        positionY += 2; 
                         hero.style.top = positionY + 'vh';
                     } else {
                         clearInterval(fallInterval);
-                        positionY = startY; // Гарантируем возврат на изначальную позицию
+                        positionY = startY; // kommer i samme posisjon i Y
                         hero.style.top = positionY + 'vh';
                         isJumping = false;
                     }
@@ -139,16 +139,16 @@ function jump() {
 
 
 
-// Функция атаки
+// attack
 function heroAttack() {
     console.log("Attack!");
 }
 
-// Обработчики событий для клавиш
+// keyborad movings 
 document.addEventListener("keydown", function(event) {
     if (isDialogueActive) return; 
 
-    keys[event.code] = true; // Запоминаем, что клавиша нажата
+    keys[event.code] = true; 
 
     if (event.code === "KeyD") {
         moveRight();
@@ -165,18 +165,18 @@ document.addEventListener("keydown", function(event) {
 });
 
 document.addEventListener("keyup", function(event) {
-    keys[event.code] = false; // Сбрасываем статус кнопки
+    keys[event.code] = false; 
 });
 
 
-// Когда игрок завершает первый уровень
+// går til menyen - til 2 nivået 
 function endLevel1() {
-    localStorage.setItem('level1Completed', true); // Сохраняем, что первый уровень завершен
-    localStorage.setItem('levelUnlocked', 2); // Делаем второй уровень доступным
-    document.getElementById('end-dialog').style.display = 'block'; // Показываем диалог о завершении уровня
+    localStorage.setItem('level1Completed', true); // Save settings
+    localStorage.setItem('levelUnlocked', 2); 
+    document.getElementById('end-dialog').style.display = 'block'; 
 }
 
 document.getElementById('end-dialog-close-button').addEventListener('click', () => {
-    console.log('Going to menu'); // Проверь, выводится ли это сообщение в консоли
-    window.location.href = 'levelsmenu.html';  // Переход в меню
+    console.log('Going to menu'); 
+    window.location.href = 'levelsmenu.html';  // går til menyen 
 });

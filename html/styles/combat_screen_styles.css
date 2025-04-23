@@ -1,8 +1,8 @@
 body {
     background: url('../images/backgrounds/background_4.png') no-repeat center center fixed;
-    background-size: cover; /* Растягиваем фон на весь экран */
-    background-position: center; /* Фон будет выровнен по центру */
-    background-repeat: no-repeat; /* Фон не будет повторяться */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
     margin: 0;
     padding: 0;
     background-color: #f7bdeb;
@@ -10,17 +10,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh; /* Используем полную высоту экрана */
-    overflow: hidden; /* Отключаем прокрутку, чтобы фон не выходил за пределы экрана */
+    height: 100vh; 
+    overflow: hidden; 
 }
 
 .rules {
     position: absolute;
-    bottom: 5vh; /* Отступ от нижней границы */
-    left: 2vw; /* Отступ от левой границы */
+    bottom: 5vh; 
+    left: 2vw; 
     width: auto;
-    height: 15vh; /* Адаптивная высота */
-    max-width: 250px; /* Ограничение ширины изображения */
+    height: 15vh; 
+    max-width: 250px; 
     z-index: 10;
 }
 
@@ -37,11 +37,11 @@ body {
 }
 
 .back_arrow_1 {
-    height: 8vw; /* Увеличиваем размер стрелочки на 1vw для большей видимости */
+    height: 8vw; 
     max-height: 50px;
-    min-height: 15px; /* Ограничиваем максимальную высоту */
+    min-height: 15px; 
     width: auto;
-    margin-top: -2vw; /* Регулируем отступ для центровки */
+    margin-top: -2vw; 
 }
 
 .header {
@@ -64,7 +64,7 @@ body {
 .player-container {
     display: flex;
     align-items: flex-end;
-    width: 100%; /* Используем всю ширину экрана */
+    width: 100%; 
 }
 
 
@@ -150,17 +150,17 @@ body {
 
 .hero, .enemy {
     position: absolute;
-    max-height: 20vw; /* Ограничиваем максимальную высоту персонажей */
+    max-height: 20vw;
     width: auto;
-    bottom: 0; /* Помещаем их в нижнюю часть контейнера */
+    bottom: 0; 
 }
 
 
 
 
 .enemy {
-    right: 14vw; /* Враг справа от центра */
-    bottom: 5vh; /* Тот же отступ снизу для врага */
+    right: 14vw; 
+    bottom: 5vh; 
 }
 
 #name-form {
@@ -177,11 +177,11 @@ body {
     font-style: normal;
     font-size: 20px;
     
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    background-size: 10px 10px;  
+    background-repeat: repeat;  
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 
     background-color: #f884be;
     color: #ffffff;
@@ -199,8 +199,8 @@ body {
     min-height: 3vh;
 
     overflow: hidden; 
-    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
-    white-space: nowrap; /* Не переносит текст */
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .submit{
@@ -210,11 +210,11 @@ body {
     font-style: normal;
     font-size: 20px;
     
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    background-size: 10px 10px; 
+    background-repeat: repeat;
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
 
     background-color: #f884be;
     color: #ffffff;
@@ -232,8 +232,8 @@ body {
     min-height: 3vh;
 
     overflow: hidden; 
-    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
-    white-space: nowrap; /* Не переносит текст */
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 }
 
 .submit:hover{
@@ -260,11 +260,11 @@ body {
     font-style: normal;
     font-size: 20px;
     
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    background-size: 10px 10px;  
+    background-repeat: repeat;   
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
 
     background-color: #f884be;
     color: #ffffff;
@@ -282,15 +282,15 @@ body {
     min-height: 3vh;
 
     overflow: hidden; 
-    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
-    white-space: nowrap; /* Не переносит текст */
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 }
 
-/* Стили для полос здоровья */
+
 .health-bar-container {
-    width: 20vw; /* Размер адаптивный */
-    max-width: 500px; /* Ограничение по максимальной ширине */
-    min-width: 280px; /* Минимальная ширина */
+    width: 20vw; 
+    max-width: 500px; 
+    min-width: 280px; 
     margin: 10px auto;
     position: absolute;
     z-index: 10;
@@ -321,7 +321,7 @@ body {
 
 .health-bar-fill {
     height: 100%;
-    width: 100%; /* Изначально 100%, меняется динамически */
+    width: 100%; 
     background-color: #84eef6;
     border-radius: 8px;
     transition: width 0.3s ease-in-out;
@@ -339,13 +339,13 @@ p {
 }
 
 input {
-    font-family: "Pixelify Sans", sans-serif; /* Используй свой шрифт */
-    font-size: 16px; /* Размер шрифта */
-    color: #333; /* Цвет текста */
-    text-align: center; /* Центрирование текста */
-    padding: 5px; /* Внутренние отступы */
-    border-radius: 5px; /* Закругление углов */
-    border: 2px solid #ccc; /* Граница */
+    font-family: "Pixelify Sans", sans-serif; 
+    font-size: 16px; 
+    color: #333;
+    text-align: center; 
+    padding: 5px; 
+    border-radius: 5px; 
+    border: 2px solid #ccc; 
 }
 
 @keyframes blink {
@@ -355,8 +355,8 @@ input {
 }
 
 #end-dialog {
-    display: flex; /* Изначально скрыто */
-    flex-direction: row; /* Элементы в ряд */
+    display: flex; 
+    flex-direction: row; 
     position: relative;
     width: 60%;
     height: auto;
@@ -364,23 +364,23 @@ input {
     border: 4px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    margin-bottom: 1vw; /* Центрируем сам диалог */
+    margin-bottom: 1vw; 
     padding: 20px;
-    gap: 20px; /* Отступ между изображением и текстом */
+    gap: 20px; 
     
 }
 
 .sister_end {
-    width: 150px; /* Фиксированный размер */
+    width: 150px; 
     height: auto;
-    flex-shrink: 0; /* Запрещаем сжатие картинки */
+    flex-shrink: 0; 
 }
 
 .end-dialog-content {
     display: flex;
-    flex-direction: column; /* Текст и кнопка в колонку */
+    flex-direction: column; 
     align-items: flex-start;
-    align-items: center; /* Выравнивание влево */
+    align-items: center; 
     
 }
 
@@ -391,11 +391,11 @@ input {
     font-style: normal;
     font-size: 20px;
     
-    background-size: 10px 10px;  /* Меньшие пиксели для стеклянного эффекта */
-    background-repeat: repeat;   /* Повторение текстуры */
-    border: 4px solid rgba(255, 255, 255, 0.3); /* Лёгкая белая рамка для стеклянного эффекта */
-    border-radius: 10px;  /* Закругленные углы */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* Легкий белый тень для стеклянного эффекта */
+    background-size: 10px 10px;  
+    background-repeat: repeat;
+    border: 4px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 10px;  
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); 
 
     background-color: #f884be;
     color: #ffffff;
@@ -412,8 +412,8 @@ input {
     min-height: 3vh;
 
     overflow: hidden; 
-    text-overflow: ellipsis; /* Добавляет "…" в конце длинного текста */
-    white-space: nowrap; /* Не переносит текст */
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
 
     margin-top: 0.7vh;
 }
@@ -426,7 +426,7 @@ input {
 }
 
 #end-dialog p {
-    color: #333; /* или любой другой цвет */
+    color: #333; 
     font-size: 1.3vw;
 }
 

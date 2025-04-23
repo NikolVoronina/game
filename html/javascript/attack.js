@@ -1,53 +1,53 @@
 let playerHealth = 100;
 let enemyHealth = 100;
-let isGameOver = false;  // Флаг для проверки, закончена ли игра
+let isGameOver = false;  
 
-// Функция для обновления полос здоровья
+
 function updateHealthBars() {
     const heroHealthFill = document.getElementById('hero-health-fill');
     const enemyHealthFill = document.getElementById('enemy-health-fill');
     const heroHealthText = document.getElementById('hero-health-text');
     const enemyHealthText = document.getElementById('enemy-health-text');
 
-    // Обновляем ширину полосы здоровья
+    // hvor mange % av helse man har
     heroHealthFill.style.width = playerHealth + '%';
     enemyHealthFill.style.width = enemyHealth + '%';
 
-    // Обновляем текст с текущим здоровьем
+    // hvor mange helse man har
     heroHealthText.textContent = `You: ${playerHealth}`;
     enemyHealthText.textContent = `Enemy: ${enemyHealth}`;
 }
 
 
-// Функция мигания врага
+// Enemy dies
 function makeEnemyBlink() {
     const enemy = document.querySelector('.enemy');
     
-    if (!enemy) return; // Если врага нет, выходим
+    if (!enemy) return; 
 
-    enemy.classList.add('enemy-blink'); // Добавляем класс для мигания
+    enemy.classList.add('enemy-blink'); // blinkende
     
     setTimeout(() => {
-        enemy.classList.remove('enemy-blink'); // Убираем мигание
-        enemy.style.display = 'none'; // Скрываем врага
-    }, 1500); // Таймер на 2 секунды
+        enemy.classList.remove('enemy-blink'); // fjern blinkende
+        enemy.style.display = 'none'; 
+    }, 1500); 
 }
 
-// Функция для отображения диалога о завершении игры
+// Dialogen...
 function showEndDialog() {
-    isGameOver = true; // Игра завершена, блокируем дальнейшие действия
+    isGameOver = true; 
     const endDialog = document.getElementById('end-dialog');
     if (endDialog) {
-        endDialog.style.display = 'flex'; // Используем flex, чтобы центрировать содержимое
+        endDialog.style.display = 'flex'; 
         endDialog.style.justifyContent = 'center';
         endDialog.style.alignItems = 'center';
     }
 
-    // Добавляем обработчик для кнопки "Go to Menu"
+    // "Go to Menu"
     const endDialogButton = document.getElementById('end-dialog-button');
     if (endDialogButton) {
         endDialogButton.addEventListener('click', function() {
-            window.location.href = "levelsmenu.html"; // Перенаправляем в меню
+            window.location.href = "levelsmenu.html"; // reiser til menyen
         });
     }
 }
@@ -62,29 +62,29 @@ function heroAttack() {
     fireball.src = "images/effects/1_level/attack_1level_hero.gif";  
     fireball.classList.add("fireball");
 
-    // Устанавливаем начальное положение файербола (рядом с героем)
-    fireball.style.left = (heroRect.left + 50) + "px"; // Немного впереди героя
-    fireball.style.top = (heroRect.top + 120) + "px";   // Смещаем ниже на 20px
+    // hvor står fireball...
+    fireball.style.left = (heroRect.left + 50) + "px"; 
+    fireball.style.top = (heroRect.top + 120) + "px";   
 
     document.body.appendChild(fireball); 
     moveFireball(fireball);
 }
 
-
+// hvordan fireball beveger seg
 function moveFireball(fireball) {
     let fireballInterval = setInterval(() => {
         let currentX = parseInt(fireball.style.left);
-        fireball.style.left = (currentX + 10) + "px"; // Двигаем вперёд
+        fireball.style.left = (currentX + 10) + "px"; 
 
         // Проверяем столкновение с врагом
         if (checkCollision(fireball, document.querySelector(".enemy"))) {
             clearInterval(fireballInterval);
-            fireball.remove(); // Удаляем файербол
-            enemyHitEffect(); // Запускаем эффект попадания
-            decreaseEnemyHealth(20); // Отнимаем 20 HP у врага
+            fireball.remove(); // Fjern fireball
+            enemyHitEffect(); // Efekter
+            decreaseEnemyHealth(20); // - 20XP 
         }
 
-        // Удаляем файербол, если он улетел за экран
+        // Hvis vi ikke ser fireball, da den fjerner seg 
         if (currentX > window.innerWidth) {
             clearInterval(fireballInterval);
             fireball.remove();
@@ -111,7 +111,7 @@ function enemyHitEffect() {
     let enemyRect = enemy.getBoundingClientRect();
 
     hitEffect.style.left = enemyRect.left + "px";
-    hitEffect.style.top = (enemyRect.top + 110) + "px";  // Смещаем эффект ниже
+    hitEffect.style.top = (enemyRect.top + 110) + "px";  
 
     document.body.appendChild(hitEffect);
 
@@ -122,15 +122,17 @@ function enemyHitEffect() {
 
 if (checkCollision(fireball, document.querySelector(".enemy"))) {
     clearInterval(fireballInterval);
-    fireball.remove(); // Удаляем файербол
-    enemyHitEffect(); // Запускаем эффект попадания
-    console.log("Попадание! Урон должен нанестись.");  // Проверяем, срабатывает ли попадание
-    decreaseEnemyHealth(20); // Отнимаем 20 HP у врага
+    fireball.remove(); 
+    enemyHitEffect(); 
+    console.log("Попадание! Урон должен нанестись.");  
+    decreaseEnemyHealth(20); 
 }
 
+
+// "damage" effects 
 function decreaseEnemyHealth(damage) {
-    enemyHealth -= damage; // Уменьшаем здоровье врага
-    if (enemyHealth < 0) enemyHealth = 0; // Чтобы не ушло в минус
+    enemyHealth -= damage; // mindre helse 
+    if (enemyHealth < 0) enemyHealth = 0; 
     updateHealthBars(); // Обновляем UI
     console.log("Враг получил урон! HP:", enemyHealth);
 
@@ -141,20 +143,20 @@ function decreaseEnemyHealth(damage) {
 }
 
 
-// Обработчик для кнопки "Go to Menu"
+// "Go to Menu"
 document.getElementById('end-dialog-close-button').addEventListener('click', function() {
-    // Сохраняем, что 2-й уровень теперь доступен
+   
     localStorage.setItem('levelUnlocked', 2); 
     
-    // Перенаправляем пользователя в меню уровней
+   
     window.location.href = "levelsmenu.html";
 });
 
-// После завершения 1-го уровня
+
 document.getElementById('end-dialog-close-button').addEventListener('click', function() {
-    // Сохраняем, что 2-й уровень теперь доступен
+   
     localStorage.setItem('levelUnlocked', 2);
     
-    // Перенаправляем пользователя в меню уровней
+  
     window.location.href = "levelsmenu.html";
 });
