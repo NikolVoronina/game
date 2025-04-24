@@ -1,7 +1,7 @@
 const dialogue = [
-    "Hello traveler! What is your name?",
+    "Hey there! You look new around here. Welcome to Lunaria! We've been waiting for you. What is your name?",
     "Does this world really look cute? But you still need to learn how to f i g h t.",
-    "Do not worry, I will become your mentor. I see the potential in you",
+    "Because you're one of us now. A witch. But before you can learn magic, you need to prove yourself. Come, I'll show you around.",
     "Try to create your first magical spell and apply it on my clone.",
     "Do not worry, I will not hurt you, since you are a beginner in this world."
 ];
