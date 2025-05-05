@@ -1,10 +1,10 @@
 // lagrer dialoglinjene i en tabell
 const dialogue = [
-    "Hey der! Du ser ny ut her. Velkommen til Lunaria! Vi har ventet på deg. Hva heter du?",
-    "Synes du virkelig denne verdenen ser søt ut? Men du må fortsatt lære å k a m p e.",
-    "Fordi du er en av oss nå. En heks. Men før du kan lære magi, må du bevise deg. Kom, jeg skal vise deg rundt.",
-    "Prøv å lage din første magiske formel og bruk den på min klone.",
-    "Ikke vær redd, jeg kommer ikke til å skade deg, siden du er nybegynner her."
+    "Hey there! You look new around here. Welcome to Lunaria! We've been waiting for you. What is your name?",
+    "Does this world really look cute? But you still need to learn how to f i g h t.",
+    "Because you're one of us now. A witch. But before you can learn magic, you need to prove yourself. Come, I'll show you around.",
+    "Try to create your first magical spell and apply it on my clone.",
+    "Do not worry, I will not hurt you, since you are a beginner in this world."
 ];
 
 let currentDialogueIndex = 0;
@@ -16,26 +16,26 @@ function updateDialogue() {
     const dialogueText = document.getElementById("intro-text");
     const nextButton = document.getElementById("next-button");
     const closeButton = document.getElementById("close-button");
-    const nameForm = document.getElementById("name-form");
 
-    if (currentDialogueIndex === 0) {
-        nameForm.style.display = "none";  // skjuler navnefeltet etter at det er sendt inn
+    if (currentDialogueIndex < dialogue.length) {
+        let line = dialogue[currentDialogueIndex];
+
+        // замена USERNAME на введённое имя
+        if (line.includes("USERNAME")) {
+            line = line.replace("USERNAME", username);
+        }
+
+        dialogueText.innerHTML = line;
         currentDialogueIndex++;
-        dialogueText.innerHTML = `Hyggelig å møte deg, <span style="color: #f884be; display: inline;">${username}</span> Mitt navn er <span style="color:#679BDA; display: inline;">Yumi</span>`;
-        nextButton.style.display = "inline-block";
-    } else if (currentDialogueIndex === 1) {
-        dialogueText.textContent = dialogue[currentDialogueIndex];
-        currentDialogueIndex++;
-        nextButton.textContent = "❯";
-    } else if (currentDialogueIndex === 2) {
-        dialogueText.textContent = dialogue[currentDialogueIndex];
-        currentDialogueIndex++;
-        nextButton.textContent = "❯";
-    } else if (currentDialogueIndex === 3) {
-        dialogueText.textContent = dialogue[currentDialogueIndex];
-        currentDialogueIndex++;
-        nextButton.style.display = "none";  // skjuler "Neste"-knappen
-        closeButton.style.display = "inline-block";  // viser "Lukk"-knappen
+
+        // Показываем/скрываем кнопки
+        if (currentDialogueIndex === dialogue.length - 1) {
+            nextButton.style.display = "none";
+            closeButton.style.display = "inline-block";
+        } else {
+            nextButton.style.display = "inline-block";
+            closeButton.style.display = "none";
+        }
     } else {
         closeDialogue();  // avslutter dialogen
     }
@@ -67,11 +67,16 @@ function closeDialogue() {
 document.getElementById("name-form").addEventListener("submit", function(event) {
     event.preventDefault();
     username = document.getElementById("username").value;
+    document.getElementById("name-form").style.display = "none";
+    currentDialogueIndex++; // пропускаем первую реплику (где спрашивают имя)
     updateDialogue();  // fortsetter til neste dialoglinje
 });
 
 // går videre til neste dialoglinje ved klikk
 document.getElementById("next-button").addEventListener("click", updateDialogue);
+
+// остальной код без изменений...
+
 
 // figurens startposisjon
 let hero = document.querySelector(".hero");

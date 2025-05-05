@@ -111,23 +111,7 @@ body {
     flex-direction: column;
 }
 
-.next-button {
-    font-family: "Pixelify Sans", serif;
-    background-color: #f884be;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5vw;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
 
-.next-button:hover {
-    background-color: #f8f8f8;
-    color: #f884be;
-}
 
 @keyframes fadeInImage {
     0% {
@@ -175,7 +159,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 20px;
+    font-size: 12px;
     
     background-size: 10px 10px;  
     background-repeat: repeat;  
@@ -186,29 +170,36 @@ body {
     background-color: #f884be;
     color: #ffffff;
 
-    width: 3vw;
-    height: 3vh;
+    width: 3.5vw;
+    height: 3.5vh;
 
-    margin-left: 2vw;
+   
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 
-    min-width: 3vw;
-    min-height: 3vh;
+    min-width: 3.5vw;
+    min-height: 3.5vh;
 
     overflow: hidden; 
     text-overflow: ellipsis;
     white-space: nowrap;
+    display: none;
 }
+#next-button:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #f884be;
+}
+
 
 .submit{
     font-family: "Pixelify Sans", serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
+    font-style: n2px;
+    font-size: 12px;
     
     background-size: 10px 10px; 
     background-repeat: repeat;
@@ -228,8 +219,8 @@ body {
     align-items: center;
     text-align: center;
 
-    min-width: 3vw;
-    min-height: 3vh;
+    min-width: 3.5vw;
+    min-height: 3.5vh;
 
     overflow: hidden; 
     text-overflow: ellipsis; 
@@ -258,7 +249,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 20px;
+    font-size: 12px;
     
     background-size: 10px 10px;  
     background-repeat: repeat;   
@@ -269,8 +260,8 @@ body {
     background-color: #f884be;
     color: #ffffff;
 
-    width: 3vw;
-    height: 3vh;
+    width: 3.5vw;
+    height: 3.5vh;
 
     margin-left: 2vw;
     display: flex;
@@ -278,8 +269,8 @@ body {
     align-items: center;
     text-align: center;
 
-    min-width: 3vw;
-    min-height: 3vh;
+    min-width: 3.5vw;
+    min-height: 3.5vh;
 
     overflow: hidden; 
     text-overflow: ellipsis; 
@@ -358,22 +349,24 @@ input {
     display: flex; 
     flex-direction: row; 
     position: relative;
+    justify-content: center;
+    align-items: center;
     width: 60%;
-    height: auto;
+    height: 7vw;
     background-color: rgba(255, 255, 255, 0.6);
     border: 4px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    margin-bottom: 1vw; 
-    padding: 20px;
-    gap: 20px; 
+    margin-top: -10vh; 
+    padding: 10px;
+   
     
 }
 
 .sister_end {
-    width: 150px; 
-    height: auto;
-    flex-shrink: 0; 
+    
+    height: 100%;
+    
 }
 
 .end-dialog-content {
@@ -408,8 +401,8 @@ input {
     align-items: center;
     text-align: center;
 
-    min-width: 8vw;
-    min-height: 3vh;
+    min-width: 10vw;
+    min-height: 3.5vh;
 
     overflow: hidden; 
     text-overflow: ellipsis; 
