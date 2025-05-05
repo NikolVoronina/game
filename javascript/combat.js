@@ -16,26 +16,26 @@ function updateDialogue() {
     const dialogueText = document.getElementById("intro-text");
     const nextButton = document.getElementById("next-button");
     const closeButton = document.getElementById("close-button");
+    const nameForm = document.getElementById("name-form");
 
-    if (currentDialogueIndex < dialogue.length) {
-        let line = dialogue[currentDialogueIndex];
-
-        // замена USERNAME на введённое имя
-        if (line.includes("USERNAME")) {
-            line = line.replace("USERNAME", username);
-        }
-
-        dialogueText.innerHTML = line;
+    if (currentDialogueIndex === 0) {
+        nameForm.style.display = "none";  // skjuler navnefeltet etter at det er sendt inn
         currentDialogueIndex++;
-
-        // Показываем/скрываем кнопки
-        if (currentDialogueIndex === dialogue.length - 1) {
-            nextButton.style.display = "none";
-            closeButton.style.display = "inline-block";
-        } else {
-            nextButton.style.display = "inline-block";
-            closeButton.style.display = "none";
-        }
+        dialogueText.innerHTML = `Nice to meet you, <span style="color: #f884be; display: inline;">${username}</span> My name is <span style="color:#679BDA; display: inline;">Yumi</span>`;
+        nextButton.style.display = "inline-block";
+    } else if (currentDialogueIndex === 1) {
+        dialogueText.textContent = dialogue[currentDialogueIndex];
+        currentDialogueIndex++;
+        nextButton.textContent = "❯";
+    } else if (currentDialogueIndex === 2) {
+        dialogueText.textContent = dialogue[currentDialogueIndex];
+        currentDialogueIndex++;
+        nextButton.textContent = "❯";
+    } else if (currentDialogueIndex === 3) {
+        dialogueText.textContent = dialogue[currentDialogueIndex];
+        currentDialogueIndex++;
+        nextButton.style.display = "none";  // skjuler "Neste"-knappen
+        closeButton.style.display = "inline-block";  // viser "Lukk"-knappen
     } else {
         closeDialogue();  // avslutter dialogen
     }
@@ -67,16 +67,11 @@ function closeDialogue() {
 document.getElementById("name-form").addEventListener("submit", function(event) {
     event.preventDefault();
     username = document.getElementById("username").value;
-    document.getElementById("name-form").style.display = "none";
-    currentDialogueIndex++; // пропускаем первую реплику (где спрашивают имя)
     updateDialogue();  // fortsetter til neste dialoglinje
 });
 
 // går videre til neste dialoglinje ved klikk
 document.getElementById("next-button").addEventListener("click", updateDialogue);
-
-// остальной код без изменений...
-
 
 // figurens startposisjon
 let hero = document.querySelector(".hero");
