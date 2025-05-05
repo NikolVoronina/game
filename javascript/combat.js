@@ -1,25 +1,27 @@
+// lagrer dialoglinjene i en tabell
 const dialogue = [
-    "Hey there! You look new around here. Welcome to Lunaria! We've been waiting for you. What is your name?",
-    "Does this world really look cute? But you still need to learn how to f i g h t.",
-    "Because you're one of us now. A witch. But before you can learn magic, you need to prove yourself. Come, I'll show you around.",
-    "Try to create your first magical spell and apply it on my clone.",
-    "Do not worry, I will not hurt you, since you are a beginner in this world."
+    "Hey der! Du ser ny ut her. Velkommen til Lunaria! Vi har ventet på deg. Hva heter du?",
+    "Synes du virkelig denne verdenen ser søt ut? Men du må fortsatt lære å k a m p e.",
+    "Fordi du er en av oss nå. En heks. Men før du kan lære magi, må du bevise deg. Kom, jeg skal vise deg rundt.",
+    "Prøv å lage din første magiske formel og bruk den på min klone.",
+    "Ikke vær redd, jeg kommer ikke til å skade deg, siden du er nybegynner her."
 ];
 
 let currentDialogueIndex = 0;
-let username = '';  // her beveger vi navnet av brukeren
-let isDialogueActive = true; 
+let username = '';  // lagrer spillerens navn
+let isDialogueActive = true;  // deaktiverer bevegelse mens dialogen pågår
 
+// oppdaterer dialogteksten
 function updateDialogue() {
     const dialogueText = document.getElementById("intro-text");
     const nextButton = document.getElementById("next-button");
-    const closeButton = document.getElementById("close-button"); 
+    const closeButton = document.getElementById("close-button");
     const nameForm = document.getElementById("name-form");
 
     if (currentDialogueIndex === 0) {
-        nameForm.style.display = "none";  // fjerne seg etter på
+        nameForm.style.display = "none";  // skjuler navnefeltet etter at det er sendt inn
         currentDialogueIndex++;
-        dialogueText.innerHTML = `Nice to meet you, <span style="color: #f884be; display: inline;">${username}</span> My name is <span style="color:#679BDA; display: inline;">Yumi`;
+        dialogueText.innerHTML = `Hyggelig å møte deg, <span style="color: #f884be; display: inline;">${username}</span> Mitt navn er <span style="color:#679BDA; display: inline;">Yumi</span>`;
         nextButton.style.display = "inline-block";
     } else if (currentDialogueIndex === 1) {
         dialogueText.textContent = dialogue[currentDialogueIndex];
@@ -32,22 +34,21 @@ function updateDialogue() {
     } else if (currentDialogueIndex === 3) {
         dialogueText.textContent = dialogue[currentDialogueIndex];
         currentDialogueIndex++;
-        nextButton.style.display = "none";  // - "Next"
-        closeButton.style.display = "inline-block";  // + "Close"
+        nextButton.style.display = "none";  // skjuler "Neste"-knappen
+        closeButton.style.display = "inline-block";  // viser "Lukk"-knappen
     } else {
-        closeDialogue();
+        closeDialogue();  // avslutter dialogen
     }
 }
 
+// lar brukeren trykke Enter for å gå videre i dialogen
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        
         const nextButton = document.getElementById("next-button");
         if (nextButton.style.display !== "none") {
             nextButton.click();
         }
-        
-        
+
         const closeButton = document.getElementById("close-button");
         if (closeButton.style.display !== "none") {
             closeButton.click();
@@ -55,79 +56,79 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-// lukkes dialogen
+// avslutter dialogboksen
 function closeDialogue() {
     const boxGame = document.querySelector(".box_game");
-    boxGame.style.visibility = "hidden";  
-    isDialogueActive = false; // fra dette øyeblikket man kan bevege seg 
+    boxGame.style.visibility = "hidden";
+    isDialogueActive = false; // aktiverer figurens bevegelser igjen
 }
 
-// navn 
+// henter navnet fra skjemaet
 document.getElementById("name-form").addEventListener("submit", function(event) {
     event.preventDefault();
-    username = document.getElementById("username").value;  // får navn
-    updateDialogue();  // neste steg
+    username = document.getElementById("username").value;
+    updateDialogue();  // fortsetter til neste dialoglinje
 });
 
-// next button 
+// går videre til neste dialoglinje ved klikk
 document.getElementById("next-button").addEventListener("click", updateDialogue);
 
-// posisjon
+// figurens startposisjon
 let hero = document.querySelector(".hero");
 let positionX = 22;
-let positionY = 55; 
-let isJumping = false; 
-let keys = {}; 
+let positionY = 55;
+let isJumping = false;
+let keys = {};
 
-// posisjon når vi starter 
+// plasserer figuren på skjermen
 hero.style.position = "absolute";
 hero.style.left = positionX + 'vw';
 hero.style.top = positionY + 'vh';
 
-
-// til høyre
-function moveRight(speed = 1) {  // speed 
-    if (positionX < window.innerWidth - hero.offsetWidth) { 
-        positionX += speed;  
-        hero.style.left = positionX + 'vw'; 
+// går mot høyre
+function moveRight(speed = 1) {
+    if (positionX < window.innerWidth - hero.offsetWidth) {
+        positionX += speed;
+        hero.style.left = positionX + 'vw';
     }
 }
 
-// til venstre
+// går mot venstre
 function moveLeft() {
     if (positionX > 0) {
-        positionX -= 1; 
-        hero.style.left = positionX + 'vw'; 
+        positionX -= 1;
+        hero.style.left = positionX + 'vw';
     }
 }
 
+// hoppemekanikk
 function jump() {
     if (!isJumping) {
         isJumping = true;
-        let startY = positionY; 
-        let jumpHeight = 35; // høylengde
+        let startY = positionY;
+        let jumpHeight = 35;
         let jumpUp = 0;
-        let dashForward = keys["KeyD"] ? 2 : 0; // rykk fremovre
-        let dashBackward = keys["KeyA"] ? -2 : 0; // rykk tilbake
+        let dashForward = keys["KeyD"] ? 2 : 0;
+        let dashBackward = keys["KeyA"] ? -2 : 0;
 
         let jumpInterval = setInterval(function () {
             if (jumpUp < jumpHeight) {
-                positionY -= 2; 
-                positionX += dashForward + dashBackward; // beveger seg i luft
+                positionY -= 2;
+                positionX += dashForward + dashBackward;
                 hero.style.top = positionY + 'vh';
                 hero.style.left = positionX + 'vw';
                 jumpUp += 2;
             } else {
                 clearInterval(jumpInterval);
 
-                // animasjon som man går ned
+                // faller ned igjen
                 let fallInterval = setInterval(function () {
                     if (positionY < startY) {
-                        positionY += 2; 
+                        positionY += 2;
                         hero.style.top = positionY + 'vh';
                     } else {
                         clearInterval(fallInterval);
-                        positionY = startY; // kommer i samme posisjon i Y
+                        positionY = startY;
                         hero.style.top = positionY + 'vh';
                         isJumping = false;
                     }
@@ -137,46 +138,41 @@ function jump() {
     }
 }
 
-
-
-// attack
+// enkel angrepsfunksjon
 function heroAttack() {
-    console.log("Attack!");
+    console.log("Angrip!");
 }
 
-// keyborad movings 
+// tastaturkontroller
 document.addEventListener("keydown", function(event) {
-    if (isDialogueActive) return; 
+    if (isDialogueActive) return;
 
-    keys[event.code] = true; 
+    keys[event.code] = true;
 
     if (event.code === "KeyD") {
         moveRight();
-    } 
-    else if (event.code === "KeyA") { 
+    } else if (event.code === "KeyA") {
         moveLeft();
-    } 
-    else if (event.code === "Space" || event.code === "KeyW") { 
+    } else if (event.code === "Space" || event.code === "KeyW") {
         jump();
-    } 
-    else if (event.code === "KeyE") { 
+    } else if (event.code === "KeyE") {
         heroAttack();
     }
 });
 
 document.addEventListener("keyup", function(event) {
-    keys[event.code] = false; 
+    keys[event.code] = false;
 });
 
-
-// går til menyen - til 2 nivået 
+// avslutter nivå 1 og åpner nivå 2
 function endLevel1() {
-    localStorage.setItem('level1Completed', true); // Save settings
-    localStorage.setItem('levelUnlocked', 2); 
-    document.getElementById('end-dialog').style.display = 'block'; 
+    localStorage.setItem('level1Completed', true);
+    localStorage.setItem('levelUnlocked', 2);
+    document.getElementById('end-dialog').style.display = 'block';
 }
 
+// knapp for å gå til nivåmenyen
 document.getElementById('end-dialog-close-button').addEventListener('click', () => {
-    console.log('Going to menu'); 
-    window.location.href = 'levelsmenu.html';  // går til menyen 
+    console.log('Går til meny');
+    window.location.href = 'levelsmenu.html';
 });

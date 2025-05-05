@@ -5,24 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1_Level</title>
+
+    <!-- Kobling til ekstern stilfil -->
     <link rel="stylesheet" href="../styles/combat_screen_styles.css">
+
+    <!-- Forhåndskobling til Google Fonts for raskere lasting -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Valgte skrifttyper for spillet -->
     <link
         href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
+    <!-- Øvre del av skjermen med tilbakeknapp -->
     <div class="header">
         <button class="back_arrow" onclick="window.location.href='levelsmenu.html'">
             <img class="back_arrow_1" src="../images/elements/arrow_back.png" alt="">
         </button>
-
     </div>
 
+    <!-- Spillområdet der spiller og fiende vises -->
     <div class="player-container">
-        <!-- Hovedpersonen  helsestripe -->
+
+        <!-- Helselinje for hovedpersonen -->
         <div class="health-bar-container" id="hero-health-container">
             <div class="health-bar" id="hero-health-bar">
                 <div class="health-bar-fill" id="hero-health-fill"></div>
@@ -30,13 +38,12 @@
             <p id="hero-health-text">You: 100</p>
         </div>
 
-
+        <!-- Bilde av spillfiguren -->
         <div class="player">
-
             <img class="hero" src="../images/characters/hero_1.png" alt="Player Model">
         </div>
 
-        <!-- Fiendens helsestripe -->
+        <!-- Helselinje for fienden -->
         <div class="health-bar-container" id="enemy-health-container">
             <div class="health-bar" id="enemy-health-bar">
                 <div class="health-bar-fill" id="enemy-health-fill"></div>
@@ -44,31 +51,34 @@
             <p id="enemy-health-text">Enemy: 100</p>
         </div>
 
+        <!-- Bilde av fienden -->
         <div class="player_enemy">
             <img class="enemy" src="../images/characters/sister.png" alt="Enemy Model">
         </div>
     </div>
 
+    <!-- Dialogboks for introduksjon og navnevalg -->
     <div class="box_game">
         <img class="sister" id="intro-image" src="../images/characters/sister_closer.png" alt="Intro Image">
-
 
         <div id="intro-text" class="intro-text">
             Hey there! You look new around here. We've been waiting for you
             <span>What is your name?</span>
 
+            <!-- Skjema for å skrive inn spillernavn -->
             <form id="name-form">
                 <input type="text" id="username" required>
                 <button class="submit" type="submit">❯</button>
             </form>
             <label for="username"></label>
-
         </div>
+
+        <!-- Navigasjonsknapper for dialog -->
         <button id="next-button" style="display:none;">❯</button>
         <button id="close-button" style="display:none;" onclick="closeDialogue()">✖</button>
     </div>
 
-
+    <!-- Sluttdialog etter seier eller fullført nivå -->
     <div id="end-dialog" style="display:none;">
         <img class="sister_end" id="intro-image" src="../images/characters/sister_closer.png" alt="Intro Image">
 
@@ -78,11 +88,12 @@
         </div>
     </div>
 
+    <!-- Footer med regler -->
     <footer>
         <img class="rules" src="../images/elements/rules.png" alt="">
     </footer>
 
-
+    <!-- JavaScript-filer som styrer kamp og angrep -->
     <script src="../javascript/combat.js"></script>
     <script src="../javascript/attack.js"></script>
 </body>

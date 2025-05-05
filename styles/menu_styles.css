@@ -49,6 +49,14 @@ ul {
     text-align: center;
 }
 
+
+.copyright{
+    font-family: "Pixelify Sans", serif;
+    color: #f884be;
+    font-size: 0.5vw;
+}
+
+
 li {
    padding: 1vw;
    
@@ -154,4 +162,18 @@ a:hover {
     cursor: pointer;
     background-color: #ffffff;
     color: #f884be;
+}
+
+
+.equipment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    
 }
