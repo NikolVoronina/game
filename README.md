@@ -23,4 +23,4 @@ The game includes a **level selection menu** and supports navigation between dif
 ## 🚀 Installation & Usage  
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/username/my-game.git
+   git clone [https://github.com/username/my-game.git](https://github.com/NikolVoronina/game.git)
